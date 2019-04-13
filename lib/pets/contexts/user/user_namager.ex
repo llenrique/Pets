@@ -16,4 +16,10 @@ defmodule Pets.Contexts.UserManager do
     |> Repo.all()
   end
 
+  def create(fields \\ %{}) do
+    %User{}
+    |> User.changeset(fields)
+    |> Repo.insert()
+  end
+
 end

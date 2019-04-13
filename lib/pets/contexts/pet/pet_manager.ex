@@ -8,4 +8,10 @@ defmodule Pets.Contexts.PetManager do
     Pet
     |> Repo.all
   end
+
+  def create(fields \\ %{}) do
+    %Pet{}
+    |> Pet.changeset(fields)
+    |> Repo.insert()
+  end
 end
