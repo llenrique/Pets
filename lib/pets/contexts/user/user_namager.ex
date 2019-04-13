@@ -10,4 +10,10 @@ defmodule Pets.Contexts.UserManager do
     |> Repo.all()
   end
 
+  def list_preload_pets do
+    User
+    |> preload(:pets)
+    |> Repo.all()
+  end
+
 end
