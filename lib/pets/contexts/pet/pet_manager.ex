@@ -9,6 +9,11 @@ defmodule Pets.Contexts.PetManager do
     |> Repo.all
   end
 
+  def list_single_pet(id) do
+    Pet
+    |> Repo.get!(id)
+  end
+
   def create(fields \\ %{}) do
     %Pet{}
     |> Pet.changeset(fields)
