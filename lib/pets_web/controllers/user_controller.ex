@@ -6,13 +6,13 @@ defmodule PetsWeb.UserController do
     users = UserManager.list()
 
     conn
-    |> render(:index, users: users)
+    |> render("index.json", users: users)
   end
 
   def show(conn, %{"id" => id}) do
     user = UserManager.list_single_user(id)
 
     conn
-    |> render(:show, user: user)
+    |> render("index.json", user: user)
   end
 end
