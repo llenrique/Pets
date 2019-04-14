@@ -16,6 +16,8 @@ defmodule Pets.Repo.Migrations.AddPetsTable do
   end
 
   def down do
+    BehaviorEnum.drop_type
+
     drop table("pets")
   end
 end

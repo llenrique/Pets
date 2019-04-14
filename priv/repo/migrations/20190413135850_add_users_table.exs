@@ -16,6 +16,7 @@ defmodule Pets.Repo.Migrations.AddUsersTable do
   end
 
   def down do
+    GenderEnum.drop_type
     drop table("users")
   end
 end
