@@ -1,0 +1,9 @@
+<div class="">
+  <%= for user <- @users do %>
+    <div class="">
+      <a href="<%= Routes.user_path(@conn, :show, user.id) %>">
+        Propietario: <%= user.first_name %> <%=  user.last_name %>
+      </a>
+    </div>
+  <% end %>
+</div>
