@@ -16,6 +16,12 @@ defmodule Pets.Contexts.UserManager do
     |> Repo.all()
   end
 
+  def list_single_user(id) do
+    User
+    |> preload(:pets)
+    |> Repo.get!(id)
+  end
+
   def create(fields \\ %{}) do
     %User{}
     |> User.changeset(fields)
