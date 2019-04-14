@@ -17,7 +17,7 @@ defmodule Pets.Contexts.User do
     timestamps()
   end
 
-  def changeset(%User{}=user, attrs) do
+  def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, @fields)
     |> validate_required(@required)

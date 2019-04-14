@@ -21,7 +21,6 @@ defmodule PetsWeb.Router do
     resources "/users", UserController, only: [:index, :show] do
       resources "/pets", PetController, only: [:index, :show]
     end
-
   end
 
   # Other scopes may use custom stacks.

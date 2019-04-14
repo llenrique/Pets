@@ -3,7 +3,7 @@ defmodule PetsWeb.UserController do
   alias Pets.Contexts.UserManager
 
   def index(conn, _params) do
-    users = UserManager.list
+    users = UserManager.list()
 
     conn
     |> render(:index, users: users)

@@ -6,7 +6,7 @@ defmodule Pets.Contexts.PetManager do
 
   def list do
     Pet
-    |> Repo.all
+    |> Repo.all()
   end
 
   def list_single_pet(id) do

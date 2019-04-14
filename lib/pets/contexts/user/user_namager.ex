@@ -4,7 +4,6 @@ defmodule Pets.Contexts.UserManager do
   alias Pets.Repo
   alias Pets.Contexts.User
 
-
   def list do
     User
     |> Repo.all()
@@ -27,5 +26,4 @@ defmodule Pets.Contexts.UserManager do
     |> User.changeset(fields)
     |> Repo.insert()
   end
-
 end
