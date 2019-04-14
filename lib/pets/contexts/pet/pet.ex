@@ -3,8 +3,8 @@ defmodule Pets.Contexts.Pet do
   import Ecto.Changeset
   alias Pets.Contexts.Pet
 
-  @fields [:pet_name, :pet_race, :behavior, :birth_date, :gender, :user_id]
-  @required [:pet_name, :pet_race, :behavior, :birth_date, :gender, :user_id]
+  @fields [:pet_name, :pet_race, :behavior, :birth_date, :gender, :user_id, :pet_type]
+  @required [:pet_name, :pet_race, :behavior, :birth_date, :gender, :user_id, :pet_type]
 
   schema "pets" do
     field :pet_name, :string
@@ -12,6 +12,7 @@ defmodule Pets.Contexts.Pet do
     field :behavior, :string
     field :birth_date, :date
     field :gender, :string
+    field :pet_type, :string
     field :user_id, :integer
     timestamps()
   end
