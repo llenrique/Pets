@@ -12,7 +12,6 @@ defmodule Pets.Contexts.User do
     field :email, :string
     field :password, :string
     field :gender, :string
-    field :active, :boolean
     has_many :pets, Pet
     timestamps()
   end

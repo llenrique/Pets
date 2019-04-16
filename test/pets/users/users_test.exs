@@ -4,12 +4,17 @@ defmodule Pets.UserTest do
   alias Pets.Contexts.UserManager
 
   describe "users" do
-    @valid_attrs %{first_name: "Test", last_name: "Testing", email: "t@est.com", password: "tested", gender: "female", birth_date: ~D[2000-10-10], active: true}
+    @valid_attrs %{
+      first_name: "Test",
+      last_name: "Testing",
+      email: "t@est.com",
+      password: "tested",
+      gender: "female"
+    }
 
     def user_fixture(attrs \\ %{}) do
       with create_attrs <- Map.merge(@valid_attrs, attrs),
-           {:ok, user} <- UserManager.create_user(create_attrs)
-      do
+           {:ok, user} <- UserManager.create_user(create_attrs) do
         user
       end
     end

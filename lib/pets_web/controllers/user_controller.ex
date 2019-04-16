@@ -8,9 +8,10 @@ defmodule PetsWeb.UserController do
     conn
     |> render("index.html", users: users)
   end
-  
+
   def new(conn, _params) do
     user = UserManager.new_user()
+
     conn
     |> render("new.html", user: user)
   end
@@ -21,7 +22,6 @@ defmodule PetsWeb.UserController do
       |> put_flash(:info, "User created!")
       |> redirect(to: Routes.user_path(conn, :show, user.id))
     end
-
   end
 
   def show(conn, %{"id" => id}) do
@@ -30,5 +30,4 @@ defmodule PetsWeb.UserController do
     conn
     |> render("show.html", user: user)
   end
-
 end

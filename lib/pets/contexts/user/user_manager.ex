@@ -17,13 +17,11 @@ defmodule Pets.Contexts.UserManager do
     |> Repo.get!(id)
   end
 
-  def new_user(), do: User.changeset(%User {}, %{})
+  def new_user(), do: User.changeset(%User{}, %{})
 
   def create_user(fields \\ %{}) do
-    IO.inspect fields
     %User{}
     |> User.changeset(fields)
     |> Repo.insert()
   end
-
 end
