@@ -3,8 +3,8 @@ defmodule Pets.Contexts.User do
   import Ecto.Changeset
   alias Pets.Contexts.{User, Pet}
 
-  @fields [:first_name, :last_name, :email, :password, :gender, :birth_date]
-  @required [:first_name, :last_name, :email, :password, :gender, :birth_date]
+  @fields [:first_name, :last_name, :email, :password, :gender]
+  @required [:first_name, :last_name, :email, :password, :gender]
 
   schema "users" do
     field :first_name, :string
@@ -12,7 +12,7 @@ defmodule Pets.Contexts.User do
     field :email, :string
     field :password, :string
     field :gender, :string
-    field :birth_date, :date
+    field :active, :boolean
     has_many :pets, Pet
     timestamps()
   end
