@@ -1,7 +1,3 @@
 <div class="">
   <h1> <%= @user.first_name %> </h1>
-
-  <%= for pet <- @user.pets do %>
-    <p><%= pet.pet_name %></p>
-  <% end %>
 </div>
