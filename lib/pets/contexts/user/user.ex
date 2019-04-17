@@ -20,7 +20,7 @@ defmodule Pets.Contexts.User do
     user
     |> cast(attrs, @fields)
     |> validate_format(:email, ~r/@/)
-    |> validate_required(@required)
     |> unique_constraint(:email)
+    |> validate_required(@required)
   end
 end

@@ -2,7 +2,6 @@ defmodule Pets.Repo.Migrations.AddUsersTable do
   use Ecto.Migration
 
   def up do
-    GenderEnum.create_type()
 
     create table("users") do
       add :first_name, :string
@@ -10,13 +9,12 @@ defmodule Pets.Repo.Migrations.AddUsersTable do
       add :email, :string
       add :password, :string
       add :birth_date, :date
-      add :gender, GenderEnum.type()
+      add :gender, :string
       timestamps()
     end
   end
 
   def down do
-    GenderEnum.drop_type()
     drop table("users")
   end
 end

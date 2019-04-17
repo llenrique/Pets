@@ -1,0 +1,6 @@
+<div class="">
+  <p>Name: <%= @pet.pet_name %></p>
+  <p>Type: <%= @pet.pet_type %></p>
+  <p>Race: <%= @pet.pet_race %></p>
+  <p>Gender: <%= @pet.gender %></p>
+</div>

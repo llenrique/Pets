@@ -8,7 +8,7 @@ defmodule Pets.UserFactory do
        %User{
          first_name: "Test",
          last_name: "Testing",
-         email: "t@est.com",
+         email:  sequence(:email, &"email-#{&1}@example.com"),
          password: "tested",
          gender: "female"
        }

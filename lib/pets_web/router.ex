@@ -22,6 +22,10 @@ defmodule PetsWeb.Router do
     get "/users/new", UserController, :new
     get "/user/:id", UserController, :show
     post "/users", UserController, :create
+
+    get "/pet/new", PetController, :new
+    get "/pet/:id", PetController, :show
+    post "/pet/create", PetController, :create
   end
 
   # Other scopes may use custom stacks.

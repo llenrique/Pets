@@ -32,6 +32,7 @@ defmodule Pets.UserTest do
 
   test "list_single/1 returns the user with the given id" do
     user = insert(:user)
+    IO.inspect user
     assert UserManager.list_single(user.id) == user
   end
 

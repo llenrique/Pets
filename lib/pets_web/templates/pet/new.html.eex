@@ -1,0 +1,49 @@
+<div class="user-form">
+  <h2>User Signup</h2>
+  <!-- field :pet_name, :string
+  field :pet_race, :string
+  field :behavior, BehaviorEnum
+  field :gender, GenderEnum
+  field :pet_type, PetTypeEnum
+  field :user_id, :integer -->
+  <%= form_for @pet, Routes.pet_path(@conn, :create), fn f -> %>
+    <p>
+      <label>
+        Pet Name:
+      </label>
+      <%= text_input f, :pet_name %>
+    </p>
+    <p>
+      <label>
+        Pet Race:
+      </label>
+      <%= text_input f, :pet_race %>
+    </p>
+    <p>
+      <label>
+        Behavior:
+      </label>
+      <%= text_input f, :behavior %>
+    </p>
+    <p>
+      <label>
+        Gender:
+      </label>
+      <%= text_input f, :gender %>
+    </p>
+    <p>
+      <label>
+        Pet Type:
+      </label>
+      <%= text_input f, :pet_type %>
+    </p>
+    <p>
+      <label>
+        User Id:
+      </label>
+      <%= number_input f, :user_id %>
+    </p>
+
+    <%= submit 'Create' %>
+  <% end %>
+</div>

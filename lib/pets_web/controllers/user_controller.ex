@@ -19,7 +19,7 @@ defmodule PetsWeb.UserController do
     with {:ok, user} <- UserManager.create(attrs) do
       conn
       |> put_flash(:info, "User created!")
-      |> redirect(to: Routes.user_path(conn, :show, user.id))
+      |> redirect(to: Routes.user_path(conn, :show, user))
     end
   end
 
