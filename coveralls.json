@@ -1,0 +1,12 @@
+{
+  "skip_files": [
+    "application.ex",
+    "ecto_enum.ex",
+    "repo.ex",
+    "pets_web.ex",
+    "endpoint.ex",
+    "gettext.ex",
+    "test/factories/*",
+    "test/support/*"
+  ]
+}

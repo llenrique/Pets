@@ -10,7 +10,8 @@ defmodule Pets.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
     ]
   end
 
@@ -25,7 +26,7 @@ defmodule Pets.MixProject do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
@@ -33,6 +34,8 @@ defmodule Pets.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_machina, "~> 2.3", only: :test},
       {:ecto_enum, "~> 1.2"},
       {:phoenix, "~> 1.4.1"},
       {:phoenix_pubsub, "~> 1.1"},

@@ -1,5 +1,6 @@
 defmodule PetsWeb.UserControllerTest do
   use PetsWeb.ConnCase
+  import Pets.Factory
 
   test "GET /users/new", %{conn: conn} do
     conn = get(conn, "/users/new")
@@ -7,19 +8,9 @@ defmodule PetsWeb.UserControllerTest do
   end
 
   test "GET /user/:id", %{conn: conn} do
-    with {:ok, user} <-
-           Pets.Contexts.UserManager.create_user(%{
-             first_name: "Test",
-             last_name: "Testing",
-             email: "t@est.com",
-             password: "tested",
-             gender: "female"
-           }) do
+      user = insert(:user)
       conn = get(conn, "/user/#{user.id}")
       assert html_response(conn, 200) =~ user.first_name
-    else
-      _ -> assert false
-    end
   end
 
   test "POST /users", %{conn: conn} do

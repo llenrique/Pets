@@ -1,37 +1,42 @@
 defmodule Pets.UserTest do
   use Pets.DataCase
 
-  alias Pets.Contexts.UserManager
+  alias Pets.Contexts.{UserManager, User}
 
-  describe "users" do
-    @valid_attrs %{
-      first_name: "Test",
-      last_name: "Testing",
-      email: "t@est.com",
-      password: "tested",
-      gender: "female"
-    }
+  import Pets.Factory
 
-    def user_fixture(attrs \\ %{}) do
-      with create_attrs <- Map.merge(@valid_attrs, attrs),
-           {:ok, user} <- UserManager.create_user(create_attrs) do
-        user
-      end
-    end
+  @valid_attrs %{
+    first_name: "Test",
+    last_name: "Testing",
+    email: "t@est.com",
+    password: "tested",
+    gender: "female"
+  }
 
-    test "list/0 returns all users" do
-      user = user_fixture()
-      assert UserManager.list() == [user]
-    end
+  @invalid_attrs %{
+    first_name: "",
+    last_name: "Testing",
+    email: "",
+    password: "tested",
+    gender: "female"
+  }
 
-    test "list_single_user/1 returns the user with the given id" do
-      user = user_fixture()
-      assert UserManager.list_single_user(user.id) == user
-    end
+  test "new_invalid" do
+    assert {:error, %Ecto.Changeset{}} = UserManager.create(@invalid_attrs)
+  end
 
-    test "new_user/0 returns a blank changeset" do
-      changeset = UserManager.new_user()
-      assert changeset.__struct__ == Ecto.Changeset
-    end
+  test "list/0 returns all users" do
+    user = insert(:user)
+    assert UserManager.list() == [user]
+  end
+
+  test "list_single/1 returns the user with the given id" do
+    user = insert(:user)
+    assert UserManager.list_single(user.id) == user
+  end
+
+  test "new/0 returns a blank changeset" do
+    {:ok, %User{} = user} = UserManager.create(@valid_attrs)
+    assert user.first_name == @valid_attrs.first_name
   end
 end

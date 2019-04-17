@@ -6,20 +6,25 @@ defmodule Pets.Contexts.UserManager do
 
   def list, do: Repo.all(User)
 
+  @doc """
+  ajwja dasojd asjd asjd as
+  """
+  @spec list_preload_pets() :: [%User{}]
   def list_preload_pets do
     User
     |> preload(:pets)
     |> Repo.all()
   end
 
-  def list_single_user(id) do
+  @spec list_single(integer) :: [%User{}]
+  def list_single(id) do
     User
     |> Repo.get!(id)
   end
 
-  def new_user(), do: User.changeset(%User{}, %{})
+  def new, do: User.changeset(%User{}, %{})
 
-  def create_user(fields \\ %{}) do
+  def create(fields \\ %{}) do
     %User{}
     |> User.changeset(fields)
     |> Repo.insert()

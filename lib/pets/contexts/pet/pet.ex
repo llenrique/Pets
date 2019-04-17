@@ -9,10 +9,10 @@ defmodule Pets.Contexts.Pet do
   schema "pets" do
     field :pet_name, :string
     field :pet_race, :string
-    field :behavior, :string
+    field :behavior, BehaviorEnum
     field :birth_date, :date
-    field :gender, :string
-    field :pet_type, :string
+    field :gender, GenderEnum
+    field :pet_type, PetTypeEnum
     field :user_id, :integer
     timestamps()
   end

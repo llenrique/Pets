@@ -11,7 +11,7 @@ defmodule Pets.Contexts.User do
     field :last_name, :string
     field :email, :string
     field :password, :string
-    field :gender, :string
+    field :gender, GenderEnum
     has_many :pets, Pet
     timestamps()
   end
@@ -19,6 +19,8 @@ defmodule Pets.Contexts.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, @fields)
+    |> validate_format(:email, ~r/@/)
     |> validate_required(@required)
+    |> unique_constraint(:email)
   end
 end
