@@ -3,7 +3,7 @@ defmodule PetsWeb.PetController do
   alias Pets.Contexts.PetManager
 
   def new(conn, _params) do
-    pet = PetManager.new
+    pet = PetManager.new()
 
     conn
     |> render("new.html", pet: pet)

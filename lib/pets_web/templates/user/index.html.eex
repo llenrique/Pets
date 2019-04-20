@@ -1,4 +1,7 @@
 <div class="">
+  <p>
+    <a class="button" href="<%= Routes.user_path(@conn, :new) %>">Add user</a>
+  </p>
   <%= for user <- @users do %>
     <div class="">
       <a href="<%= Routes.user_path(@conn, :show, user.id) %>">

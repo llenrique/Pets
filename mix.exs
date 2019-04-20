@@ -34,6 +34,8 @@ defmodule Pets.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
+      {:comeonin, "~> 5.1.1"},
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_machina, "~> 2.3", only: :test},
       {:ecto_enum, "~> 1.2"},
@@ -46,7 +48,7 @@ defmodule Pets.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
     ]
   end
 

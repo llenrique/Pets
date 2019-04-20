@@ -1,3 +1,9 @@
 <div class="">
   <h1> <%= @user.first_name %> </h1>
+  <p>
+    <a href="<%= Routes.pet_path(@conn, :new) %>" class="button">Add Pet</a>
+  </p>
+  <%= for pet <- @user.pets do %>
+    <a href="<%= Routes.pet_path(@conn, :show, pet) %>"><%= pet.pet_name %></a>
+  <% end %>
 </div>

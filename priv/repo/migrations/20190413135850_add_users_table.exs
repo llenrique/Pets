@@ -7,7 +7,7 @@ defmodule Pets.Repo.Migrations.AddUsersTable do
       add :first_name, :string
       add :last_name, :string
       add :email, :string
-      add :password, :string
+      add :encrypted_password, :string
       add :birth_date, :date
       add :gender, :string
       timestamps()

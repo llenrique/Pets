@@ -10,6 +10,7 @@ defmodule Pets.UserTest do
     last_name: "Testing",
     email: "t@est.com",
     password: "tested",
+    password_confirmation: "tested",
     gender: "female"
   }
 
@@ -18,6 +19,7 @@ defmodule Pets.UserTest do
     last_name: "Testing",
     email: "",
     password: "tested",
+    password_confirmation: "",
     gender: "female"
   }
 
@@ -31,12 +33,11 @@ defmodule Pets.UserTest do
   end
 
   test "list_single/1 returns the user with the given id" do
-    user = insert(:user)
-    IO.inspect user
+    user = Repo.preload(insert(:user), :pets)
     assert UserManager.list_single(user.id) == user
   end
 
-  test "new/0 returns a blank changeset" do
+  test "create/1 returns a blank changeset" do
     {:ok, %User{} = user} = UserManager.create(@valid_attrs)
     assert user.first_name == @valid_attrs.first_name
   end

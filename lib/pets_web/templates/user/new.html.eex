@@ -27,6 +27,12 @@
     </p>
     <p>
       <label>
+        Password Confirmation:
+      </label>
+      <%= password_input f, :password_confirmation %>
+    </p>
+    <p>
+      <label>
         Gender:
       </label>
       <%= text_input f, :gender %>

@@ -6,19 +6,10 @@ defmodule Pets.Contexts.UserManager do
 
   def list, do: Repo.all(User)
 
-  @doc """
-  ajwja dasojd asjd asjd as
-  """
-  @spec list_preload_pets() :: [%User{}]
-  def list_preload_pets do
-    User
-    |> preload(:pets)
-    |> Repo.all()
-  end
-
   @spec list_single(integer) :: [%User{}]
   def list_single(id) do
     User
+    |> preload(:pets)
     |> Repo.get!(id)
   end
 
