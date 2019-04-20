@@ -4,7 +4,7 @@ defmodule Pets.Contexts.User do
   alias Pets.Contexts.{User, Pet}
 
   @fields [:first_name, :last_name, :email, :password, :password_confirmation, :gender]
-  @required [:first_name, :last_name, :email, :gender, :encrypted_password]
+  @required [:first_name, :last_name, :email, :encrypted_password, :gender]
 
   schema "users" do
     field :first_name, :string
@@ -33,7 +33,7 @@ defmodule Pets.Contexts.User do
     |> cast(attrs, @fields)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
-    |> validate_confirmation(:password, message: "paswords fields noes not match")
+    |> validate_confirmation(:password, message: "passwords fields does not match")
     |> encrypt_password()
     |> validate_required(@required)
   end
