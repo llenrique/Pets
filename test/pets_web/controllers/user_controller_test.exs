@@ -9,7 +9,6 @@ defmodule PetsWeb.UserControllerTest do
 
   test "GET /users/:id", %{conn: conn} do
       user = insert(:user)
-      IO.inspect user
       conn = get(conn, "/users/#{user.id}")
       assert html_response(conn, 200) =~ user.first_name
   end
@@ -26,6 +25,6 @@ defmodule PetsWeb.UserControllerTest do
     }
 
     conn = post conn, "/users", %{"user" => user_params}
-    assert redirected_to(conn) =~ "/user/"
+    assert redirected_to(conn) =~ "/users/"
   end
 end

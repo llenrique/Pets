@@ -9,8 +9,7 @@ defmodule Pets.UserFactory do
          first_name: "Test",
          last_name: "Testing",
          email:  sequence(:email, &"email-#{&1}@example.com"),
-         password: "tested",
-         password_confirmation: "tested",
+         encrypted_password: "abc1234",
          gender: "female"
        }
      end
