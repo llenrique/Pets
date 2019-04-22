@@ -3,8 +3,8 @@ defmodule Pets.Contexts.User do
   import Ecto.Changeset
   alias Pets.Contexts.{User, Pet}
 
-  @fields [:first_name, :last_name, :email, :password, :password_confirmation, :gender]
-  @required [:first_name, :last_name, :email, :encrypted_password, :gender]
+  @fields [:first_name, :last_name, :email, :password, :password_confirmation, :gender, :username]
+  @required [:first_name, :last_name, :email, :encrypted_password, :gender, :username]
 
   schema "users" do
     field :first_name, :string
@@ -16,6 +16,7 @@ defmodule Pets.Contexts.User do
     field :password_confirmation, :string, virtual: true
 
     field :gender, GenderEnum
+    field :username, :string
     has_many :pets, Pet
     timestamps()
   end
@@ -33,6 +34,7 @@ defmodule Pets.Contexts.User do
     |> cast(attrs, @fields)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
+    |> unique_constraint(:user)
     |> validate_confirmation(:password, message: "passwords fields does not match")
     |> encrypt_password()
     |> validate_required(@required)

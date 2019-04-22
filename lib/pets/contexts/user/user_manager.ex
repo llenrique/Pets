@@ -20,4 +20,9 @@ defmodule Pets.Contexts.UserManager do
     |> User.changeset(fields)
     |> Repo.insert()
   end
+
+  def get_user_by_username(username) do
+    User
+    |> Repo.get_by(username: username)
+  end
 end
