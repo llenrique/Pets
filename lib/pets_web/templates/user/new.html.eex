@@ -15,6 +15,12 @@
     </p>
     <p>
       <label>
+        Username:
+      </label>
+      <%= text_input f, :username %>
+    </p>
+    <p>
+      <label>
         Email:
       </label>
       <%= email_input f, :email %>
