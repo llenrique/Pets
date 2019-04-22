@@ -21,6 +21,10 @@ defmodule PetsWeb.Router do
     resources "/users", UserController, only: [:index, :new, :create, :show]
     resources "/pet", PetController, only: [:new, :show, :create]
 
+    resources "/sessions", SessionController, only: [:create]
+
+    get "/login", SessionController, :new
+    get "/logout", SessionController, :delete
   end
 
   # Other scopes may use custom stacks.
