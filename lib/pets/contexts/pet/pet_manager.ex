@@ -21,5 +21,4 @@ defmodule Pets.Contexts.PetManager do
     Pet
     |> Repo.all()
   end
-
 end

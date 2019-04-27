@@ -24,6 +24,15 @@ defmodule Pets.UserTest do
     gender: "female"
   }
 
+  test "get_user_by_username/1 returns the user with the matching username" do
+    user = insert(:user)
+    assert UserManager.get_user_by_username(user.username)
+  end
+
+  test "get_user_by_username/1 returns nil when there is not a matching username" do
+    assert is_nil(UserManager.get_user_by_username("fail"))
+  end
+
   test "new_invalid" do
     assert {:error, %Ecto.Changeset{}} = UserManager.create(@invalid_attrs)
   end

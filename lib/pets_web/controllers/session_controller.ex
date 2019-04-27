@@ -16,11 +16,14 @@ defmodule PetsWeb.SessionController do
 
   def create(conn, %{"username" => username, "password" => password}) do
     with user <- UserManager.get_user_by_username(username),
-      {:ok, login_user} <- login(user, password)
-    do
+         {:ok, login_user} <- login(user, password) do
       conn
       |> put_flash(:info, "Logged in successfully!")
-      |> put_session(:user, %{id: login_user.id, username: login_user.username, email: login_user.email})
+      |> put_session(:user, %{
+        id: login_user.id,
+        username: login_user.username,
+        email: login_user.email
+      })
       |> redirect(to: "/")
     else
       {:error, _} ->

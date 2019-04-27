@@ -2,7 +2,6 @@ defmodule Pets.Repo.Migrations.AddUsersTable do
   use Ecto.Migration
 
   def up do
-
     create table("users") do
       add :first_name, :string
       add :last_name, :string

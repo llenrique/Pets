@@ -9,7 +9,7 @@ defmodule Pets.PetTest do
     behavior: "happy",
     gender: "female",
     pet_type: "feline",
-    user_id: 2
+    user_id: 1
   }
 
   @invalid_attrs %{
@@ -18,7 +18,7 @@ defmodule Pets.PetTest do
     behavior: "",
     gender: "female",
     pet_type: "",
-    user_id: 2
+    user_id: 1
   }
 
   test "new_invalid" do

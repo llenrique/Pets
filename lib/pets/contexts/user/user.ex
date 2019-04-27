@@ -34,7 +34,6 @@ defmodule Pets.Contexts.User do
     |> cast(attrs, @fields)
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
-    |> unique_constraint(:user)
     |> validate_confirmation(:password, message: "passwords fields does not match")
     |> encrypt_password()
     |> validate_required(@required)

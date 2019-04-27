@@ -11,6 +11,7 @@ defmodule PetsWeb.UserController do
 
   def new(conn, _params) do
     user = UserManager.new()
+
     conn
     |> render("new.html", user: user)
   end

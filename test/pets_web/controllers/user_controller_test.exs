@@ -8,9 +8,9 @@ defmodule PetsWeb.UserControllerTest do
   end
 
   test "GET /users/:id", %{conn: conn} do
-      user = insert(:user)
-      conn = get(conn, "/users/#{user.id}")
-      assert html_response(conn, 200) =~ user.first_name
+    user = insert(:user)
+    conn = get(conn, "/users/#{user.id}")
+    assert html_response(conn, 200) =~ user.first_name
   end
 
   test "POST /users", %{conn: conn} do
@@ -22,7 +22,7 @@ defmodule PetsWeb.UserControllerTest do
       password: "tested",
       password_confirmation: "tested",
       gender: "female",
-      encrypted_password: "TESTING",
+      encrypted_password: "TESTING"
     }
 
     conn = post conn, "/users", %{"user" => user_params}

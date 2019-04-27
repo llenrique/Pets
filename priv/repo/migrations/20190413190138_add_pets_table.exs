@@ -2,7 +2,6 @@ defmodule Pets.Repo.Migrations.AddPetsTable do
   use Ecto.Migration
 
   def up do
-
     create table("pets") do
       add :pet_name, :string
       add :pet_race, :string

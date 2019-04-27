@@ -19,6 +19,7 @@ defmodule PetsWeb.PetController do
 
   def show(conn, %{"id" => id}) do
     pet = PetManager.list_single(id)
+
     conn
     |> render("show.html", pet: pet)
   end
