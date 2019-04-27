@@ -11,7 +11,7 @@ config :logger, level: :warn
 
 # Configure your database
 config :pets, Pets.Repo,
-  username: "postgres",
+  username: "enrique",
   password: "postgres",
   database: "pets_test",
   hostname: "localhost",

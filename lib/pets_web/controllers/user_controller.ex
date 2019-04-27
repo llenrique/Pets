@@ -20,6 +20,11 @@ defmodule PetsWeb.UserController do
       conn
       |> put_flash(:info, "User created!")
       |> redirect(to: Routes.user_path(conn, :show, user))
+    else
+      {:error, user} ->
+        conn
+        |> put_flash(:error, "Falied to create user")
+        |> render("new.html", user: user)
     end
   end
 

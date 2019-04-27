@@ -8,6 +8,7 @@ defmodule Pets.UserTest do
   @valid_attrs %{
     first_name: "Test",
     last_name: "Testing",
+    username: "test",
     email: "t@est.com",
     password: "tested",
     password_confirmation: "tested",
