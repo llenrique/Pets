@@ -26,6 +26,6 @@ defmodule PetsWeb.UserControllerTest do
     }
 
     conn = post conn, "/users", %{"user" => user_params}
-    assert redirected_to(conn) =~ "/users/"
+    assert redirected_to(conn) =~ "/login"
   end
 end

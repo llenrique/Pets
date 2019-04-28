@@ -25,7 +25,7 @@ defmodule PetsWeb.SessionControllerTest do
 
   test "POST /sessions (with valid data)", %{conn: conn, user: user} do
     conn = post conn, "/sessions", %{username: user.username, password: "tested"}
-    assert redirected_to(conn) == "/"
+    assert redirected_to(conn) == "/users/#{user.id}"
     assert Plug.Conn.get_session(conn, :user)
   end
 

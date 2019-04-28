@@ -18,7 +18,7 @@ defmodule PetsWeb.UserController do
 
   def create(conn, %{"user" => attrs}) do
     case UserManager.create(attrs) do
-      {:ok, user} ->
+      {:ok, _user} ->
         conn
         |> put_flash(:info, "User Creaded")
         |> redirect(to: Routes.session_path(conn, :new))
