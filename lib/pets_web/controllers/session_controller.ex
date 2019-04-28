@@ -24,7 +24,7 @@ defmodule PetsWeb.SessionController do
         username: login_user.username,
         email: login_user.email
       })
-      |> redirect(to: "/")
+      |> redirect(to: "/users/#{login_user.id}")
     else
       {:error, _} ->
         conn
