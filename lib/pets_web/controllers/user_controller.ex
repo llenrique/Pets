@@ -17,11 +17,11 @@ defmodule PetsWeb.UserController do
   end
 
   def create(conn, %{"user" => attrs}) do
-    with {:ok, user} <- UserManager.create(attrs) do
-      conn
-      |> put_flash(:info, "User created!")
-      |> redirect(to: Routes.user_path(conn, :show, user))
-    else
+    case UserManager.create(attrs) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "User Creaded")
+        |> redirect(to: Routes.user_path(conn, :show, user))
       {:error, user} ->
         conn
         |> put_flash(:error, "Falied to create user")
