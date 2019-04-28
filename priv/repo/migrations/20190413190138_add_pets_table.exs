@@ -11,6 +11,8 @@ defmodule Pets.Repo.Migrations.AddPetsTable do
       add :user_id, references(:users)
       timestamps()
     end
+
+    create index(:pets, [:user_id])
   end
 
   def down do

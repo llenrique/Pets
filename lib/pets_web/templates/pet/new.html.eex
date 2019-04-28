@@ -31,12 +31,12 @@
       </label>
       <%= text_input f, :pet_type %>
     </p>
-    <p>
+    <!-- <p>
       <label>
         User Id:
       </label>
       <%= number_input f, :user_id %>
-    </p>
+    </p> -->
 
     <%= submit 'Create' %>
   <% end %>

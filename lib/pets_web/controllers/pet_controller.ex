@@ -10,11 +10,12 @@ defmodule PetsWeb.PetController do
   end
 
   def create(conn, %{"pet" => attrs}) do
-    with {:ok, pet} <- PetManager.create(attrs) do
-      conn
-      |> put_flash(:info, "Pet Created")
-      |> redirect(to: Routes.pet_path(conn, :show, pet))
-    end
+    user = get_session(conn, :user)
+    attrs = Map.put(attrs, "user_id", user.id)
+    {:ok, pet} = PetManager.create(attrs)
+    conn
+    |> put_flash(:info, "Pet Created")
+    |> redirect(to: Routes.pet_path(conn, :show, pet))
   end
 
   def show(conn, %{"id" => id}) do
