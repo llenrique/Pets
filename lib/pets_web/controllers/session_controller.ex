@@ -11,7 +11,7 @@ defmodule PetsWeb.SessionController do
     conn
     |> delete_session(:user)
     |> put_flash(:info, "Logged out successfully!")
-    |> redirect(to: "/")
+    |> redirect(to: "/login")
   end
 
   def create(conn, %{"username" => username, "password" => password}) do

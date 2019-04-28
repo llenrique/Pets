@@ -2,12 +2,12 @@ defmodule PetsWeb.UserController do
   use PetsWeb, :controller
   alias Pets.Contexts.UserManager
 
-  def index(conn, _params) do
-    users = UserManager.list()
-
-    conn
-    |> render("index.html", users: users)
-  end
+  # def index(conn, _params) do
+  #   users = UserManager.list()
+  #
+  #   conn
+  #   |> render("index.html", users: users)
+  # end
 
   def new(conn, _params) do
     user = UserManager.new()
@@ -21,8 +21,9 @@ defmodule PetsWeb.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User Creaded")
-        |> redirect(to: Routes.user_path(conn, :show, user))
+        |> redirect(to: Routes.session_path(conn, :new))
       {:error, user} ->
+        IO.inspect conn
         conn
         |> put_flash(:error, "Falied to create user")
         |> render("new.html", user: user)
