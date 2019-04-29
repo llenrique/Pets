@@ -18,6 +18,7 @@ defmodule Pets.Contexts.User do
     field :gender, GenderEnum
     field :username, :string
     has_many :pets, Pet
+    field :active, :boolean, default: :true
     timestamps()
   end
 
@@ -37,5 +38,10 @@ defmodule Pets.Contexts.User do
     |> validate_confirmation(:password, message: "passwords fields does not match")
     |> encrypt_password()
     |> validate_required(@required)
+  end
+
+  def active_changeset(%User{} = user, attrs) do
+    user
+    |> cast(attrs, [:active])
   end
 end

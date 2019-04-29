@@ -25,4 +25,17 @@ defmodule Pets.Contexts.UserManager do
     User
     |> Repo.get_by(username: username)
   end
+
+  def logical_delete(id) do
+    user = get_user_by_id(id)
+    change = User.active_changeset(user, %{"active" => false})
+    change
+    |> Repo.update
+  end
+
+
+  defp get_user_by_id(id) do
+    User
+    |> Repo.get!(id)
+  end
 end
