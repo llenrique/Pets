@@ -1,5 +1,5 @@
 <div class="user-form">
-  <h2>User Signup</h2>
+  <h2>Add Pet</h2>
   <%= form_for @pet, Routes.pet_path(@conn, :create), fn f -> %>
     <p>
       <label>
