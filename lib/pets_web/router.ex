@@ -18,7 +18,7 @@ defmodule PetsWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/users", UserController, only: [:new, :create, :show]
+    resources "/users", UserController, only: [:new, :create, :show, :delete]
     resources "/pet", PetController, only: [:new, :show, :create]
 
     resources "/sessions", SessionController, only: [:create]

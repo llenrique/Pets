@@ -29,6 +29,14 @@ defmodule PetsWeb.UserController do
     end
   end
 
+  def delete(conn, %{"id" => id}) do
+    user = UserManager.logical_delete(id)
+
+    IO.inspect user
+    conn
+    |> redirect(to: "/login")
+  end
+
   def show(conn, %{"id" => id}) do
     user = UserManager.list_single(id)
 

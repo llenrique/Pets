@@ -10,7 +10,7 @@ defmodule Pets.PetFactory do
           pet_race: "catrace",
           behavior: "dangerous",
           gender: "female",
-          user_id: 1
+          user: build(:user)
         }
       end
     end

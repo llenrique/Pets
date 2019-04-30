@@ -8,17 +8,14 @@ defmodule Pets.PetTest do
     pet_race: "Pet Race Testing",
     behavior: "happy",
     gender: "female",
-    pet_type: "feline",
-    user_id: 1
+    pet_type: "feline"
   }
 
   @invalid_attrs %{
     pet_name: "Pet Test",
     pet_race: "",
     behavior: "",
-    gender: "female",
-    pet_type: "",
-    user_id: 1
+    gender: "female"
   }
 
   test "new_invalid" do
@@ -27,11 +24,15 @@ defmodule Pets.PetTest do
 
   test "list/0 returns all pets" do
     pet = insert(:pet)
-    assert PetManager.list() == [pet]
+    [ element ] = PetManager.list()
+    assert length([element]) == 1
+    assert element.pet_name == pet.pet_name
   end
 
   test "new/0 returns a blank changeset" do
-    {:ok, %Pet{} = pet} = PetManager.create(@valid_attrs)
-    assert pet.pet_name == @valid_attrs.first_name
+    user = insert(:user)
+    valid_attrs = Map.put(@valid_attrs, :user_id, user.id)
+    {:ok, %Pet{} = pet} = PetManager.create(valid_attrs)
+    assert pet.pet_name == valid_attrs.pet_name
   end
 end

@@ -10,7 +10,7 @@ defmodule Pets.Contexts.UserManager do
   def list_single(id) do
     User
     |> preload(:pets)
-    |> Repo.get!(id)
+    |> Repo.get(id)
   end
 
   def new, do: User.changeset(%User{}, %{})
@@ -32,7 +32,6 @@ defmodule Pets.Contexts.UserManager do
     change
     |> Repo.update
   end
-
 
   defp get_user_by_id(id) do
     User
