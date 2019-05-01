@@ -24,7 +24,7 @@ defmodule Pets.PetTest do
 
   test "list/0 returns all pets" do
     pet = insert(:pet)
-    [ element ] = PetManager.list()
+    [element] = PetManager.list()
     assert length([element]) == 1
     assert element.pet_name == pet.pet_name
   end

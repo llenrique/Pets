@@ -31,7 +31,7 @@ defmodule PetsWeb.UserControllerTest do
 
   test "DELETE /users/:id", %{conn: conn} do
     user = insert(:user)
-    conn = delete conn, "/users/#{user.id}"
-    assert redirected_to(conn) =~"/login"
+    conn = delete(conn, "/users/#{user.id}")
+    assert redirected_to(conn) =~ "/login"
   end
 end

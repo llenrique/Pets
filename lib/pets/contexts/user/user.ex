@@ -18,7 +18,7 @@ defmodule Pets.Contexts.User do
     field :gender, GenderEnum
     field :username, :string
     has_many :pets, Pet
-    field :active, :boolean, default: :true
+    field :active, :boolean, default: true
     timestamps()
   end
 

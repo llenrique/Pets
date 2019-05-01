@@ -1,6 +1,7 @@
 defmodule PetsWeb.UserController do
   use PetsWeb, :controller
   alias Pets.Contexts.UserManager
+  # alias PetsWeb.SessionController
 
   # def index(conn, _params) do
   #   users = UserManager.list()
@@ -22,6 +23,7 @@ defmodule PetsWeb.UserController do
         conn
         |> put_flash(:info, "User Creaded")
         |> redirect(to: Routes.session_path(conn, :new))
+
       {:error, user} ->
         conn
         |> put_flash(:error, "Falied to create user")
@@ -31,6 +33,7 @@ defmodule PetsWeb.UserController do
 
   def delete(conn, %{"id" => id}) do
     user = UserManager.logical_delete(id)
+
     conn
     |> redirect(to: "/login")
   end

@@ -11,13 +11,13 @@ defmodule PetsWeb.PetsControllerTest do
   }
 
   test "GET /pet/new", %{conn: conn} do
-    conn = get conn, "/pet/new"
+    conn = get(conn, "/pet/new")
     assert html_response(conn, 200) =~ "Add Pet"
   end
 
   test "GET /pet/:id", %{conn: conn} do
     pet = insert(:pet)
-    conn = get conn, "pet/#{pet.id}"
+    conn = get(conn, "pet/#{pet.id}")
     assert html_response(conn, 200) =~ pet.pet_name
   end
 end

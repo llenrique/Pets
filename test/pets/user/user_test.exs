@@ -55,6 +55,6 @@ defmodule Pets.UserTest do
   test "logical_delete/1 change active field to false" do
     user = insert(:user)
     {:ok, logical_deleted_user} = UserManager.logical_delete(user.id)
-    assert logical_deleted_user.active != :true
+    assert logical_deleted_user.active != user.active
   end
 end

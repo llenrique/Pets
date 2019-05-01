@@ -13,6 +13,7 @@ defmodule PetsWeb.PetController do
     user = get_session(conn, :user)
     attrs = Map.put(attrs, "user_id", user.id)
     {:ok, pet} = PetManager.create(attrs)
+
     conn
     |> put_flash(:info, "Pet Created")
     |> redirect(to: Routes.pet_path(conn, :show, pet))
