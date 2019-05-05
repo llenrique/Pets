@@ -68,7 +68,7 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :pets, Pets.Repo,
-  username: "enrique",
+  username: "postgres",
   password: "postgres",
   database: "pets_dev",
   hostname: "localhost",

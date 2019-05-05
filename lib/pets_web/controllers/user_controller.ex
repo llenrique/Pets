@@ -32,10 +32,12 @@ defmodule PetsWeb.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = UserManager.logical_delete(id)
+    case UserManager.logical_delete(id) do
+      {:ok, _} ->
+        conn
+        |> redirect(to: "/login")
+    end
 
-    conn
-    |> redirect(to: "/login")
   end
 
   def show(conn, %{"id" => id}) do

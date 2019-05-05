@@ -4,9 +4,11 @@ defmodule PetsWeb.PetController do
 
   def new(conn, _params) do
     pet = PetManager.new()
-
+    user = get_session(conn, :user)
     conn
-    |> render("new.html", pet: pet)
+    |> assign(:pet, pet)
+    |> assign(:user, user)
+    |> render("new.html")
   end
 
   def create(conn, %{"pet" => attrs}) do
@@ -16,7 +18,7 @@ defmodule PetsWeb.PetController do
 
     conn
     |> put_flash(:info, "Pet Created")
-    |> redirect(to: Routes.pet_path(conn, :show, pet))
+    |> redirect(to: Routes.user_pet_path(conn, :show, user.id, pet))
   end
 
   def show(conn, %{"id" => id}) do

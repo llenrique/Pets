@@ -18,13 +18,21 @@ defmodule PetsWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/users", UserController, only: [:new, :create, :show, :delete]
-    resources "/pet", PetController, only: [:new, :show, :create]
+    resources "/user", UserController, except: [:index] do
+      resources "/pet", PetController, except: [:index]
+    end
 
     resources "/sessions", SessionController, only: [:create]
 
     get "/login", SessionController, :new
     get "/logout", SessionController, :delete
+  end
+
+  scope "/admin", PetsWeb do
+    pipe_through :browser
+
+    get "/users", UserController, :index
+    get "/user/:id/pet", PetController, :index
   end
 
   # Other scopes may use custom stacks.

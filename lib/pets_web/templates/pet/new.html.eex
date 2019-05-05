@@ -1,6 +1,6 @@
 <div class="user-form">
   <h2>Add Pet</h2>
-  <%= form_for @pet, Routes.pet_path(@conn, :create), fn f -> %>
+  <%= form_for @pet, Routes.user_pet_path(@conn, :create, @user.id), fn f -> %>
     <p>
       <label>
         Pet Name:
