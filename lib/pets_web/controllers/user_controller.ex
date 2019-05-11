@@ -46,4 +46,24 @@ defmodule PetsWeb.UserController do
     conn
     |> render("show.html", user: user)
   end
+
+  def edit(conn, %{"id" => id}) do
+    user = UserManager.get_user_by_id(id)
+    changeset = UserManager.renew(user)
+    conn
+    |> assign(:user, user)
+    |> assign(:changeset, changeset)
+    |> render("edit.html")
+  end
+
+  def update(conn, %{"id" => id, "user" => params}) do
+    user = UserManager.get_user_by_id(id)
+
+    case UserManager.update(user, params) do
+      {:ok, u_user} ->
+        conn
+        |> put_flash(:info, "User updated")
+        |> redirect(to: Routes.user_path(conn, :show, u_user.id))
+    end
+  end
 end

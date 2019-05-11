@@ -2,6 +2,10 @@ defmodule PetsWeb.PetController do
   use PetsWeb, :controller
   alias Pets.Contexts.PetManager
 
+  @doc """
+  Create a empty pet changeset and render a form to create a new pet
+  """
+
   def new(conn, _params) do
     pet = PetManager.new()
     user = get_session(conn, :user)
@@ -11,6 +15,10 @@ defmodule PetsWeb.PetController do
     |> render("new.html")
   end
 
+  @doc """
+  Persist a new pet in database
+  """
+  
   def create(conn, %{"pet" => attrs}) do
     user = get_session(conn, :user)
     attrs = Map.put(attrs, "user_id", user.id)

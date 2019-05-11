@@ -10,10 +10,13 @@ defmodule Pets.Contexts.UserManager do
   def list_single(id) do
     User
     |> preload(:pets)
-    |> Repo.get(id)
+    |> where([u], u.active != :false)
+    |> Repo.get!(id)
   end
 
   def new, do: User.changeset(%User{}, %{})
+
+  def renew(user), do: User.changeset(user, %{})
 
   def create(fields \\ %{}) do
     %User{}
@@ -23,19 +26,28 @@ defmodule Pets.Contexts.UserManager do
 
   def get_user_by_username(username) do
     User
+    |> where([u], u.active != :false)
     |> Repo.get_by(username: username)
   end
 
   def logical_delete(id) do
     user = get_user_by_id(id)
-    change = User.active_changeset(user, %{"active" => false})
+    change = User.active_changeset(user, %{"active" => :false})
 
     change
     |> Repo.update()
   end
 
-  defp get_user_by_id(id) do
+  def get_user_by_id(id) do
     User
+    |> where([d], d.active != :false)
     |> Repo.get!(id)
+  end
+
+  def update(user, attrs) do
+    u_user = User.changeset(user, attrs)
+
+    u_user
+    |> Repo.update
   end
 end
