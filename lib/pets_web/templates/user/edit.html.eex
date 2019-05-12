@@ -44,6 +44,6 @@
       <%= text_input f, :gender %>
     </p>
 
-    <%= submit 'Create' %>
+    <%= submit 'Update' %>
   <% end %>
 </div>

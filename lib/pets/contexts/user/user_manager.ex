@@ -32,9 +32,9 @@ defmodule Pets.Contexts.UserManager do
 
   def logical_delete(id) do
     user = get_user_by_id(id)
-    change = User.active_changeset(user, %{"active" => :false})
 
-    change
+    user
+    |> User.active_changeset(%{"active" => :false})
     |> Repo.update()
   end
 
@@ -45,9 +45,8 @@ defmodule Pets.Contexts.UserManager do
   end
 
   def update(user, attrs) do
-    u_user = User.changeset(user, attrs)
-
-    u_user
+    user
+    |> User.changeset(attrs)
     |> Repo.update
   end
 end

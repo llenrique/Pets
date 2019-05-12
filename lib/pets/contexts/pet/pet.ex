@@ -22,4 +22,9 @@ defmodule Pets.Contexts.Pet do
     |> foreign_key_constraint(:user_id)
     |> validate_required(@required)
   end
+
+  def update_changeset(%Pet{} = pet, attrs) do
+    pet
+    |> cast(attrs, [:behavior, :pet_race])
+  end
 end

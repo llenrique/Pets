@@ -1,0 +1,16 @@
+<div class="pet-form">
+  <h2>Edit <%= @pet.pet_name %></h2>
+
+  <%= form_for @changeset, Routes.user_pet_path(@conn, :update, @u_session.id, @pet.id), fn f -> %>
+    <p>
+      <label>Pet Race</label>
+      <%= text_input f, :pet_race %>
+    </p>
+    <p>
+      <label>Behavior</label>
+      <%= text_input f, :behavior %>
+    </p>
+
+    <%= submit 'Update' %>
+  <% end %>
+</div>

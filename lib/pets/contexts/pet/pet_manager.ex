@@ -6,6 +6,14 @@ defmodule Pets.Contexts.PetManager do
 
   def new, do: Pet.changeset(%Pet{}, %{})
 
+  def renew(pet), do: Pet.changeset(pet, %{})
+
+  def update(pet, params) do
+    pet
+    |> Pet.update_changeset(params)
+    |> Repo.update
+  end
+
   def create(fields \\ %{}) do
     %Pet{}
     |> Pet.changeset(fields)

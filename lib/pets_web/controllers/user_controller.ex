@@ -50,6 +50,7 @@ defmodule PetsWeb.UserController do
   def edit(conn, %{"id" => id}) do
     user = UserManager.get_user_by_id(id)
     changeset = UserManager.renew(user)
+  
     conn
     |> assign(:user, user)
     |> assign(:changeset, changeset)
