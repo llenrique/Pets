@@ -13,25 +13,25 @@ defmodule PetsWeb.UserControllerTest do
     encrypted_password: "TESTING"
   }
 
-  test "GET /users/new", %{conn: conn} do
-    conn = get(conn, "/users/new")
+  test "GET /user/new", %{conn: conn} do
+    conn = get(conn, "/user/new")
     assert html_response(conn, 200) =~ "User Signup"
   end
 
   test "GET /users/:id", %{conn: conn} do
     user = insert(:user)
-    conn = get(conn, "/users/#{user.id}")
+    conn = get(conn, "/user/#{user.id}")
     assert html_response(conn, 200) =~ user.first_name
   end
 
-  test "POST /users", %{conn: conn} do
-    conn = post conn, "/users", %{"user" => @user_params}
+  test "POST /user", %{conn: conn} do
+    conn = post conn, "/user", %{"user" => @user_params}
     assert redirected_to(conn) =~ "/login"
   end
 
-  test "DELETE /users/:id", %{conn: conn} do
+  test "DELETE /user/:id", %{conn: conn} do
     user = insert(:user)
-    conn = delete(conn, "/users/#{user.id}")
+    conn = delete(conn, "/user/#{user.id}")
     assert redirected_to(conn) =~ "/login"
   end
 end

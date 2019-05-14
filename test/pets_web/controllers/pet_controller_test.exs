@@ -10,14 +10,22 @@ defmodule PetsWeb.PetsControllerTest do
     pet_type: "canine"
   }
 
-  test "GET /pet/new", %{conn: conn} do
-    conn = get(conn, "/pet/new")
+  test "GET /user/:user_id/pet/new", %{conn: conn} do
+    user = insert(:user)
+    conn = get(conn, "user/#{user.id}/pet/new")
     assert html_response(conn, 200) =~ "Add Pet"
   end
 
-  test "GET /pet/:id", %{conn: conn} do
+  test "GET /user/:id/pet/:id", %{conn: conn} do
     pet = insert(:pet)
-    conn = get(conn, "pet/#{pet.id}")
+    conn = get(conn, "/user/#{pet.user.id}/pet/#{pet.id}")
     assert html_response(conn, 200) =~ pet.pet_name
+  end
+
+  test "POST /user/:id/pet", %{conn: conn} do
+    user = insert(:user)
+    valid_attrs = Map.put(@valid_attrs, :user_id, user.id)
+    IO.inspect valid_attrs
+    conn = post(conn, "/user/#{user.id}/pet", %{"pet" => valid_attrs})
   end
 end
