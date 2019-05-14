@@ -1,6 +1,18 @@
 <div class="">
+  <p>
+    <a href="<%= Routes.user_pet_path(@conn, :edit, @user.id, @pet.id) %>"> Edit </a>
+  </p>
   <p>Name: <%= @pet.pet_name %></p>
   <p>Type: <%= @pet.pet_type %></p>
   <p>Race: <%= @pet.pet_race %></p>
   <p>Gender: <%= @pet.gender %></p>
+  <%= if @pet.behavior == :anger || @pet.behavior == :dangerous do %>
+    <p>Behavior: <span style="color: red"><%= @pet.behavior %></span></p>
+  <% else %>
+    <p>Behavior:  <span style="color: green"><%= @pet.behavior %></span></p>
+  <% end %>
+
+  <p>
+    <%= link "Delete", to: Routes.user_pet_path(@conn, :delete, @user.id, @pet.id), method: :delete %>
+  </p>
 </div>
