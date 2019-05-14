@@ -7,6 +7,6 @@
     <a href="<%= Routes.user_pet_path(@conn, :new, @user.id) %>" class="button">Add Pet</a>
   </p>
   <%= for pet <- @user.pets do %>
-    <a href="<%= Routes.user_pet_path(@conn, :show, @user, pet) %>"><%= pet.pet_name %></a>
+    <%= button pet.pet_name, to: Routes.user_pet_path(@conn, :show, @user, pet), method: :get , disabled: pet.active == false %></a>
   <% end %>
 </div>

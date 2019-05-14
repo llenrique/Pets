@@ -12,6 +12,7 @@ defmodule Pets.Contexts.Pet do
     field :behavior, BehaviorEnum
     field :gender, GenderEnum
     field :pet_type, PetTypeEnum
+    field :active, :boolean, default: true
     belongs_to :user, User
     timestamps()
   end
@@ -26,5 +27,10 @@ defmodule Pets.Contexts.Pet do
   def update_changeset(%Pet{} = pet, attrs) do
     pet
     |> cast(attrs, [:behavior, :pet_race])
+  end
+
+  def active_changeset(%Pet{} = pet, attrs) do
+    pet
+    |> cast(attrs, [:active])
   end
 end

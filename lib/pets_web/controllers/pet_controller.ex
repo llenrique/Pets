@@ -9,6 +9,7 @@ defmodule PetsWeb.PetController do
   def new(conn, _params) do
     pet = PetManager.new()
     user = get_session(conn, :user)
+
     conn
     |> assign(:pet, pet)
     |> assign(:user, user)
@@ -30,9 +31,12 @@ defmodule PetsWeb.PetController do
 
   def show(conn, %{"id" => id}) do
     pet = PetManager.list_single(id)
+    user = get_session(conn, :user)
 
     conn
-    |> render("show.html", pet: pet)
+    |> assign(:user, user)
+    |> assign(:pet, pet)
+    |> render("show.html")
   end
 
   def edit(conn, %{"id" => id}) do
@@ -56,6 +60,17 @@ defmodule PetsWeb.PetController do
         conn
         |> put_flash(:info, "Pet updated")
         |> redirect(to: Routes.user_pet_path(conn, :show, user.id, u_pet.id))
+    end
+  end
+
+  def delete(conn, params) do
+    IO.inspect params["id"]
+    user = get_session(conn, :user)
+
+    case PetManager.logical_delete(params["id"]) do
+      {:ok, u} ->
+        conn
+        |> redirect(to: Routes.user_path(conn, :show, user.id))
     end
   end
 end

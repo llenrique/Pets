@@ -11,7 +11,7 @@ defmodule Pets.Contexts.PetManager do
   def update(pet, params) do
     pet
     |> Pet.update_changeset(params)
-    |> Repo.update
+    |> Repo.update()
   end
 
   def create(fields \\ %{}) do
@@ -28,5 +28,19 @@ defmodule Pets.Contexts.PetManager do
   def list do
     Pet
     |> Repo.all()
+  end
+
+  def logical_delete(id) do
+    pet = get_pet_by_id(id)
+
+    pet
+    |> Pet.active_changeset(%{"active" => false})
+    |> Repo.update()
+  end
+
+  def get_pet_by_id(id) do
+    Pet
+    |> where([p], p.active != false)
+    |> Repo.get!(id)
   end
 end
