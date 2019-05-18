@@ -1,4 +1,4 @@
-defmodule Pets.PetTestHelper do
+defmodule Pets.UserHelperTest do
   use Pets.DataCase
   alias Pets.Helpers.UserHelper
   import Pets.Factory

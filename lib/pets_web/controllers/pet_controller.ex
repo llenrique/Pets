@@ -48,7 +48,7 @@ defmodule PetsWeb.PetController do
   end
 
   def edit(conn, %{"id" => id}) do
-    pet = PetHelper.get_pet(id)
+    pet = PetHelper.show(id)
     case PetHelper.set_pet_changeset(pet) do
       {:ok, changeset} ->
         user = get_session(conn, :user)
@@ -73,7 +73,7 @@ defmodule PetsWeb.PetController do
     end
   end
 
-  def delete(conn, %{"id" => id} = params) do
+  def delete(conn, %{"id" => id}) do
     user = get_session(conn, :user)
 
     case PetHelper.delete(id) do

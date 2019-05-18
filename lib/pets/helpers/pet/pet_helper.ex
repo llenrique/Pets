@@ -12,10 +12,6 @@ defmodule Pets.Helpers.PetHelper do
     {:ok, PetManager.list_single(id)}
   end
 
-  def get_pet(id) do
-    PetManager.list_single(id)
-  end
-
   def set_pet_changeset(pet) do
     {:ok, PetManager.renew(pet)}
   end
