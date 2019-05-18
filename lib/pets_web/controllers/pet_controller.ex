@@ -13,6 +13,9 @@ defmodule PetsWeb.PetController do
     conn
     |> assign(:pet, pet)
     |> assign(:user, user)
+    |> assign(:genders, GenderEnum.__enum_map__())
+    |> assign(:behaviors, BehaviorEnum.__enum_map__())
+    |> assign(:pet_types, PetTypeEnum.__enum_map__())
     |> render("new.html")
   end
 
@@ -64,11 +67,10 @@ defmodule PetsWeb.PetController do
   end
 
   def delete(conn, params) do
-    IO.inspect params["id"]
     user = get_session(conn, :user)
 
     case PetManager.logical_delete(params["id"]) do
-      {:ok, u} ->
+      {:ok, _} ->
         conn
         |> redirect(to: Routes.user_path(conn, :show, user.id))
     end

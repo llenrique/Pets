@@ -14,6 +14,7 @@ defmodule PetsWeb.UserController do
     user = UserManager.new()
 
     conn
+    |> assign(:genders, GenderEnum.__enum_map__())
     |> render("new.html", user: user)
   end
 
@@ -50,7 +51,7 @@ defmodule PetsWeb.UserController do
   def edit(conn, %{"id" => id}) do
     user = UserManager.get_user_by_id(id)
     changeset = UserManager.renew(user)
-  
+
     conn
     |> assign(:user, user)
     |> assign(:changeset, changeset)

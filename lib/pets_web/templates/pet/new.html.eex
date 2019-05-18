@@ -17,26 +17,19 @@
       <label>
         Behavior:
       </label>
-      <%= text_input f, :behavior %>
-    </p>
-    <p>
+      <%= select f, :behavior, lists_enums(@behaviors)%>
+
       <label>
         Gender:
       </label>
-      <%= text_input f, :gender %>
-    </p>
-    <p>
+      <%= select f, :gender, lists_enums(@genders) %>
+
       <label>
         Pet Type:
       </label>
-      <%= text_input f, :pet_type %>
+      <%= select f, :pet_type, lists_enums(@pet_types) %>
     </p>
-    <!-- <p>
-      <label>
-        User Id:
-      </label>
-      <%= number_input f, :user_id %>
-    </p> -->
+
 
     <%= submit 'Create' %>
   <% end %>

@@ -41,7 +41,7 @@
       <label>
         Gender:
       </label>
-      <%= text_input f, :gender %>
+      <%= select f, :gender, genders(@genders) %>
     </p>
 
     <%= submit 'Create' %>

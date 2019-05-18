@@ -53,4 +53,10 @@ defmodule Pets.PetTest do
     {:ok, u_pet} = PetManager.update(pet, @update_attrs)
     assert u_pet.behavior == @update_attrs.behavior
   end
+
+  test "logical_delete/1 change active field to false" do
+    pet = insert(:pet)
+    {:ok, logical_deleted_pet} = PetManager.logical_delete(pet.id)
+    assert logical_deleted_pet.active != pet.active
+  end
 end

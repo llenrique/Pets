@@ -15,6 +15,16 @@ defmodule Pets.UserTest do
     gender: "female"
   }
 
+  @valid_update_attrs %{
+    first_name: "MiNombre",
+    last_name: "aCTUALIZADO",
+    username: "updated",
+    email: "up@dated.com",
+    password: "uptested",
+    password_confirmation: "uptested",
+    gender: "female"
+  }
+
   @invalid_attrs %{
     first_name: "",
     last_name: "Testing",
@@ -56,5 +66,12 @@ defmodule Pets.UserTest do
     user = insert(:user)
     {:ok, logical_deleted_user} = UserManager.logical_delete(user.id)
     assert logical_deleted_user.active != user.active
+  end
+
+  test "update/1 update an user" do
+    {:ok, %User{} = user } = UserManager.create(@valid_attrs)
+    {:ok, updated_user} = UserManager.update(user, @valid_update_attrs)
+    assert updated_user.first_name != user.first_name
+    assert updated_user.id == user.id
   end
 end
