@@ -41,7 +41,7 @@
       <label>
         Gender:
       </label>
-      <%= text_input f, :gender %>
+      <%= select f, :gender, lists_enums(@genders) %>
     </p>
 
     <%= submit 'Update' %>

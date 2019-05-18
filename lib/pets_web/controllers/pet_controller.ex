@@ -48,6 +48,7 @@ defmodule PetsWeb.PetController do
     user = get_session(conn, :user)
 
     conn
+    |> assign(:behaviors, BehaviorEnum.__enum_map__())
     |> assign(:pet, pet)
     |> assign(:u_session, user)
     |> assign(:changeset, changeset)

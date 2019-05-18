@@ -41,7 +41,7 @@
       <label>
         Gender:
       </label>
-      <%= select f, :gender, genders(@genders) %>
+      <%= select f, :gender, lists_enums(@genders) %>
     </p>
 
     <%= submit 'Create' %>

@@ -1,6 +1,6 @@
 defmodule PetsWeb.UserController do
   use PetsWeb, :controller
-  alias Pets.Contexts.UserManager
+  alias Pets.Helpers.UserHelper
   # alias PetsWeb.SessionController
 
   # def index(conn, _params) do
@@ -11,15 +11,16 @@ defmodule PetsWeb.UserController do
   # end
 
   def new(conn, _params) do
-    user = UserManager.new()
-
-    conn
-    |> assign(:genders, GenderEnum.__enum_map__())
-    |> render("new.html", user: user)
+    case UserHelper.new do
+      {:ok, user} ->
+        conn
+        |> assign(:genders, GenderEnum.__enum_map__())
+        |> render("new.html", user: user)
+    end
   end
 
   def create(conn, %{"user" => attrs}) do
-    case UserManager.create(attrs) do
+    case UserHelper.create(attrs) do
       {:ok, _user} ->
         conn
         |> put_flash(:info, "User Creaded")
@@ -33,7 +34,7 @@ defmodule PetsWeb.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    case UserManager.logical_delete(id) do
+    case UserHelper.delete(id) do
       {:ok, _} ->
         conn
         |> redirect(to: "/login")
@@ -42,30 +43,31 @@ defmodule PetsWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = UserManager.list_single(id)
-
-    conn
-    |> render("show.html", user: user)
+    case UserHelper.show(id) do
+      {:ok, user} ->
+        conn
+        |> render("show.html", user: user)
+    end
   end
 
   def edit(conn, %{"id" => id}) do
-    user = UserManager.get_user_by_id(id)
-    changeset = UserManager.renew(user)
-
-    conn
-    |> assign(:user, user)
-    |> assign(:changeset, changeset)
-    |> render("edit.html")
+    case UserHelper.edit(id) do
+      {:ok, changeset} ->
+        user = get_session(conn, :user)
+        conn
+        |> assign(:genders, GenderEnum.__enum_map__())
+        |> assign(:user, user)
+        |> assign(:changeset, changeset)
+        |> render("edit.html")
+    end
   end
 
-  def update(conn, %{"id" => id, "user" => params}) do
-    user = UserManager.get_user_by_id(id)
-
-    case UserManager.update(user, params) do
+  def update(conn, %{"id" => id, "user" => attrs} = params) do
+    case UserHelper.update(id, attrs) do
       {:ok, u_user} ->
         conn
         |> put_flash(:info, "User updated")
-        |> redirect(to: Routes.user_path(conn, :show, u_user.id))
+        |> redirect(to: Routes.user_path(conn, :show, u_user))
     end
   end
 end
