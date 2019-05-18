@@ -20,8 +20,8 @@ defmodule Pets.Helpers.UserHelper do
     {:ok, UserManager.renew(user)}
   end
 
-  def update(session_id, attrs) do
-    user = UserManager.get_user_by_id(session_id)
+  def update(user_id, attrs) do
+    user = UserManager.get_user_by_id(user_id)
     UserManager.update(user, attrs)
   end
 end

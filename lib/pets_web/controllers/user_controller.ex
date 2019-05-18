@@ -62,7 +62,7 @@ defmodule PetsWeb.UserController do
     end
   end
 
-  def update(conn, %{"id" => id, "user" => attrs} = params) do
+  def update(conn, %{"id" => id, "user" => attrs}) do
     case UserHelper.update(id, attrs) do
       {:ok, u_user} ->
         conn
