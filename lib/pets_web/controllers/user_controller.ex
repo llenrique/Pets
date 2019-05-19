@@ -1,14 +1,8 @@
 defmodule PetsWeb.UserController do
   use PetsWeb, :controller
   alias Pets.Helpers.UserHelper
-  # alias PetsWeb.SessionController
 
-  # def index(conn, _params) do
-  #   users = UserManager.list()
-  #
-  #   conn
-  #   |> render("index.html", users: users)
-  # end
+  plug PetsWeb.VerifyUserSession when action in [:delete, :show, :edit, :update]
 
   def new(conn, _params) do
     case UserHelper.new do

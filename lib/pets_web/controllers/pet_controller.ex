@@ -2,10 +2,11 @@ defmodule PetsWeb.PetController do
   use PetsWeb, :controller
   alias Pets.Helpers.PetHelper
 
+  plug PetsWeb.VerifyUserSession when action in [:new, :create, :show, :delete, :edit, :update]
+
   @doc """
   Create a empty pet changeset and render a form to create a new pet
   """
-
   def new(conn, _params) do
     case PetHelper.new do
       {:ok, pet} ->
