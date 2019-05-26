@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pets · Phoenix Framework</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-  </head>
-  <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-          </ul>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pets · Phoenix Framework</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+</head>
+<body>
+  <header>
+    <section class="hero is-warning">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="<%= Routes.page_path(@conn, :index)%>">
+                <h3 class="title">Pets Project</h3>
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active" href="<%= Routes.user_path(@conn, :new) %>">
+                  Register
+                </a>
+              </div>
+            </div>
+          </div>
         </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
-    </main>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+      </div>
+    </section>
+  </header>
+  <main role="main" class="container">
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= render @view_module, @view_template, assigns %>
+  </main>
+  <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+</body>
 </html>

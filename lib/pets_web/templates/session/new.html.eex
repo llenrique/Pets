@@ -1,15 +1,25 @@
-<div class="">
+<h1 class="title"> Login </h1>
+<div class="columns">
   <%= form_tag Routes.session_path(@conn, :create) do %>
-    <label>
-      Username: <br/>
-      <input type="text" name="username">
-    </label>
-    <br/>
-    <label>
-      Password: <br/>
-      <input type="password" name="password">
-    </label>
-    <br>
-    <%= submit "Login" %>
+    <div class="field">
+      <%= label(:user, :username, "Username") %>
+      <%= text_input :user, :username, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= label(:user, :password, "Password") %>
+      <%= password_input :user, :password, class: "input" %>
+    </div>
+
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= submit "Login", class: "button is-primary" %>
+      </div>
+
+      <div class="control">
+        <%= link "Forgot Password", to: Routes.user_path(@conn, :new), class: "button is-text" %>
+      </div>
+    </div>
   <% end %>
 </div>
