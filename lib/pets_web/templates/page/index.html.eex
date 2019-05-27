@@ -1,35 +1,31 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed and maintainability.</p>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<div class="">
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+        <div class="column is-6 is-offset-3">
+          <div class="has-text-centered">
+            <span class="icon">
+              <i class="fas fa-dog fa-3x"></i>
+            </span>
+            <h4 class="is-size-4 has-text-weight-bold">Paseadores</h4>
+          </div>
+          <br>
+          <p class="has-text-justified has-text-weight-semibold">
+            Encuentra en Cofradía I y II un paseador para tus perros
+          </p>
+          <br>
+          <p class="has-text-justified">
+            Como aún no contamos con entrenadores, revisa nuestras
+            <a href="#">Condiciones de Paseo</a> en las cuales podrás ver
+            que caracteríasticas necesita tu perro para ser aceptado
+          </p>
+          <br>
+          <p>
+            Puedes también consultar nuestra <a href="#">Tabla de tarifas</a>
+            las cuales empiezan por paseos de <b>30 min</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

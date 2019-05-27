@@ -10,32 +10,38 @@
 </head>
 <body>
   <header>
-    <section class="hero is-warning">
-      <!-- Hero head: will stick at the top -->
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="<%= Routes.page_path(@conn, :index)%>">
-                <h3 class="title">Pets Project</h3>
+    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="<%= Routes.page_path(@conn, :index) %>">
+          <h3 class="title has-text-white">Pets Project</h3>
+        </a>
+
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="<%= Routes.user_path(@conn, :new) %>">
+                <strong>Registrate</strong>
               </a>
-              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
-            <div id="navbarMenuHeroA" class="navbar-menu">
-              <div class="navbar-end">
-                <a class="navbar-item is-active" href="<%= Routes.user_path(@conn, :new) %>">
-                  Register
-                </a>
-              </div>
+              <%= if @conn.request_path == Routes.page_path(@conn, :index) do %>
+              <a class="button is-light" href="<%= Routes.session_path(@conn, :new) %>">
+                Log in
+              </a>
+              <% end %>
             </div>
           </div>
-        </nav>
+        </div>
       </div>
-    </section>
+    </nav>
+
+
   </header>
   <main role="main" class="container">
     <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
