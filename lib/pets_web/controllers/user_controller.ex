@@ -9,6 +9,7 @@ defmodule PetsWeb.UserController do
       {:ok, user} ->
         conn
         |> assign(:genders, GenderEnum.__enum_map__())
+        |> assign(:user_type, UserTypeEnum.__enum_map__())
         |> render("new.html", user: user)
     end
   end
@@ -17,7 +18,7 @@ defmodule PetsWeb.UserController do
     case UserHelper.create(attrs) do
       {:ok, _user} ->
         conn
-        |> put_flash(:info, "User Creaded")
+        |> put_flash(:info, "User Created")
         |> redirect(to: Routes.session_path(conn, :new))
 
       {:error, user} ->
@@ -31,7 +32,7 @@ defmodule PetsWeb.UserController do
     case UserHelper.delete(id) do
       {:ok, _} ->
         conn
-        |> redirect(to: "/login")
+        |> redirect(to: Routes.session_path(conn, :new))
     end
 
   end

@@ -1,49 +1,46 @@
-<div class="user-form">
-<h2>Edit: <%= @user.username %></h2>
- <%= form_for @changeset,Routes.user_path(@conn, :update, @user.id), fn f -> %>
-    <p>
-      <label>
-        First Name:
-      </label>
-      <%= text_input f, :first_name %>
-    </p>
-    <p>
-      <label>
-        Last Name:
-      </label>
-      <%= text_input f, :last_name %>
-    </p>
-    <p>
-      <label>
-        Username:
-      </label>
-      <%= text_input f, :username %>
-    </p>
-    <p>
-      <label>
-        Email:
-      </label>
-      <%= email_input f, :email %>
-    </p>
-    <p>
-      <label>
-        Password:
-      </label>
-      <%= password_input f, :password %>
-    </p>
-    <p>
-      <label>
-        Password Confirmation:
-      </label>
-      <%= password_input f, :password_confirmation %>
-    </p>
-    <p>
-      <label>
-        Gender:
-      </label>
-      <%= select f, :gender, lists_enums(@genders) %>
-    </p>
+<section class="section">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <%= form_for @changeset,Routes.user_path(@conn, :update, @user.id), fn f -> %>
+         <div class="field">
+           <label class="label">First Name:</label>
+           <%= text_input f, :first_name, class: "input"%>
+         </div>
 
-    <%= submit 'Update' %>
-  <% end %>
-</div>
+         <div class="field">
+           <label class="label">Last Name:</label>
+           <%= text_input f, :last_name, class: "input" %>
+         </div>
+
+         <div class="field">
+           <label class="label">Username:</label>
+           <%= text_input f, :username, class: "input" %>
+         </div>
+
+         <div class="field">
+           <label class="label">Email:</label>
+           <%= email_input f, :email, class: "input" %>
+         </div>
+
+         <div class="field">
+           <label class="label">Password:</label>
+           <%= password_input f, :password, class: "input" %>
+         </div>
+
+         <div class="field">
+           <label class="label">Password Confirmation:</label>
+           <%= password_input f, :password_confirmation, class: "input" %>
+         </div>
+
+         <div class="field">
+           <label class="label">Gender:</label>
+           <div class="select">
+             <%= select f, :gender, lists_enums(@genders) %>
+           </div>
+         </div>
+
+         <%= submit 'Update', class: "button is-primary" %>
+       <% end %>  
+    </div>
+  </div>
+</section>

@@ -12,7 +12,9 @@ defmodule Pets.UserTest do
     email: "t@est.com",
     password: "tested",
     password_confirmation: "tested",
-    gender: "female"
+    gender: "female",
+    phone: 5512345678,
+    user_type: :owner
   }
 
   @valid_update_attrs %{
@@ -22,7 +24,9 @@ defmodule Pets.UserTest do
     email: "up@dated.com",
     password: "uptested",
     password_confirmation: "uptested",
-    gender: "female"
+    gender: "female",
+    phone: 5512345678,
+    user_type: :walker
   }
 
   @invalid_attrs %{

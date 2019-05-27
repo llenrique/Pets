@@ -11,7 +11,9 @@ defmodule Pets.UserHelperTest do
     password: "tested",
     password_confirmation: "tested",
     gender: "female",
-    encrypted_password: "TESTING"
+    encrypted_password: "TESTING",
+    phone: 5512423010,
+    user_type: :walker
   }
 
   @update_attrs %{
@@ -22,7 +24,9 @@ defmodule Pets.UserHelperTest do
     password: "tested",
     password_confirmation: "tested",
     gender: "female",
-    encrypted_password: "TESTING"
+    encrypted_password: "TESTING",
+    phone: 5512345678,
+    user_type: :owner
   }
 
   test "new/0 return a blank changeset" do

@@ -10,7 +10,9 @@ defmodule PetsWeb.UserControllerTest do
     password: "tested",
     password_confirmation: "tested",
     gender: "female",
-    encrypted_password: "TESTING"
+    encrypted_password: "TESTING",
+    phone: 5512345678,
+    user_type: :owner
   }
 
   @valid_update_attrs %{
@@ -21,7 +23,9 @@ defmodule PetsWeb.UserControllerTest do
     password: "utested",
     password_confirmation: "utested",
     gender: "female",
-    encrypted_password: "TESTING"
+    encrypted_password: "TESTING",
+    phone: 5512345678,
+    user_type: :walker
   }
 
   test "GET /user/new", %{conn: conn} do
@@ -29,7 +33,7 @@ defmodule PetsWeb.UserControllerTest do
     assert html_response(conn, 200) =~ "User Signup"
   end
 
-  test "GET /users/:id", %{conn: conn} do
+  test "GET /user/:id", %{conn: conn} do
     user = insert(:user)
     conn = get(conn, "/user/#{user.id}")
     assert html_response(conn, 200) =~ user.first_name

@@ -1,49 +1,61 @@
-<div class="user-form">
-  <h2>User Signup</h2>
-  <%= form_for @user, Routes.user_path(@conn, :create), fn f -> %>
-    <p>
-      <label>
-        First Name:
-      </label>
-      <%= text_input f, :first_name %>
-    </p>
-    <p>
-      <label>
-        Last Name:
-      </label>
-      <%= text_input f, :last_name %>
-    </p>
-    <p>
-      <label>
-        Username:
-      </label>
-      <%= text_input f, :username %>
-    </p>
-    <p>
-      <label>
-        Email:
-      </label>
-      <%= email_input f, :email %>
-    </p>
-    <p>
-      <label>
-        Password:
-      </label>
-      <%= password_input f, :password %>
-    </p>
-    <p>
-      <label>
-        Password Confirmation:
-      </label>
-      <%= password_input f, :password_confirmation %>
-    </p>
-    <p>
-      <label>
-        Gender:
-      </label>
-      <%= select f, :gender, lists_enums(@genders) %>
-    </p>
+<div class="section">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <div class="user-form">
+        <h2 class="title">User Signup</h2>
+        <%= form_for @user, Routes.user_path(@conn, :create), fn f -> %>
+          <div class="field">
+            <label class="label">First Name:</label>
+            <%= text_input f, :first_name, class: "input" %>
+          </div>
 
-    <%= submit 'Create' %>
-  <% end %>
+          <div class="field">
+            <label class="label">Last Name:</label>
+            <%= text_input f, :last_name, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Username:</label>
+            <%= text_input f, :username, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Email:</label>
+            <%= email_input f, :email, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Phone Number:</label>
+            <%= text_input f, :phone, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Password:</label>
+            <%= password_input f, :password, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Password Confirmation</label>
+            <%= password_input f, :password_confirmation, class: "input" %>
+          </div>
+
+          <div class="field">
+            <label class="label">Gender</label>
+            <div class="select">
+              <%= select f, :gender, lists_enums(@genders) %>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Tipo de usuario</label>
+            <div class="select">
+              <%= select f, :user_type, lists_enums(@user_type) %>
+            </div>
+          </div>
+
+          <%= submit "Create", class: "button is-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

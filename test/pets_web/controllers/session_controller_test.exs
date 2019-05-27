@@ -9,7 +9,9 @@ defmodule PetsWeb.SessionControllerTest do
     email: "t@est.com",
     password: "tested",
     password_confirmation: "tested",
-    gender: "female"
+    gender: "female",
+    phone: 5512345678,
+    user_type: :walker
   }
 
   setup do
