@@ -1,12 +1,7 @@
-<div class="">
-  <h1> <%= @user.first_name %> </h1>
-  <p>
-    <%= link "Delete", to: Routes.user_path(@conn, :delete, @user), method: :delete %>
-  </p>
-  <p>
-    <a href="<%= Routes.user_pet_path(@conn, :new, @user.id) %>" class="button">Add Pet</a>
-  </p>
-  <%= for pet <- @user.pets do %>
-    <%= button pet.pet_name, to: Routes.user_pet_path(@conn, :show, @user, pet), method: :get , disabled: pet.active == false %></a>
-  <% end %>
-</div>
+<section class="section">
+  <div class="container">
+    <h1 class="title"><%= @user.first_name %> <%= @user.last_name %></h1>
+
+    <%= IO.inspect @conn.request_path %>
+  </div>
+</section>
