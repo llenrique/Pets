@@ -2,6 +2,7 @@ defmodule PetsWeb.PageController do
   use PetsWeb, :controller
 
   def index(conn, _params) do
-    redirect(conn, to: "/login")
+    conn
+    |> render("index.html")
   end
 end
