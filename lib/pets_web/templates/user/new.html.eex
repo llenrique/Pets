@@ -28,52 +28,61 @@
 
         <%= form_for @user, Routes.user_path(@conn, :create), fn f -> %>
           <div class="field">
-            <label class="label">First Name:</label>
+            <%= label f, :first_name, "First Name:", class: "label" %>
             <%= text_input f, :first_name, class: "input" %>
+            <%= error_tag f, :first_name %>
           </div>
 
           <div class="field">
-            <label class="label">Last Name:</label>
+            <%= label f, :last_name, "Last Name:", class: "label" %>
             <%= text_input f, :last_name, class: "input" %>
+            <%= error_tag f, :last_name %>
           </div>
 
           <div class="field">
-            <label class="label">Username:</label>
+            <%= label f, :username, "Username:", class: "label" %>
             <%= text_input f, :username, class: "input" %>
+            <%= error_tag f, :username %>
           </div>
 
           <div class="field">
-            <label class="label">Email:</label>
+            <%= label f, :email, "Email:", class: "label" %>
             <%= email_input f, :email, class: "input" %>
+            <%= error_tag f, :email %>
           </div>
 
           <div class="field">
-            <label class="label">Phone Number:</label>
+            <%= label f, :phone, "Phone Number:", class: "label" %>
             <%= text_input f, :phone, class: "input" %>
+            <%= error_tag f, :phone %>
           </div>
 
           <div class="field">
-            <label class="label">Password:</label>
+            <%= label f, :password, "Password:", class: "label" %>
             <%= password_input f, :password, class: "input" %>
+            <%= error_tag f, :password %>
           </div>
 
           <div class="field">
-            <label class="label">Password Confirmation</label>
+            <%= label f, :password_confirmation, "Password Confirmation:", class: "label" %>
             <%= password_input f, :password_confirmation, class: "input" %>
+            <%= error_tag f, :password_confirmation %>
           </div>
 
           <div class="field">
-            <label class="label">Gender</label>
+            <%= label f, :gender, "Gender:", class: "label" %>
             <div class="select">
               <%= select f, :gender, lists_enums(@genders) %>
             </div>
+            <%= error_tag f, :gender %>
           </div>
 
           <div class="field">
-            <label class="label">Tipo de usuario</label>
+            <%= label f, :user_type, "User Tyṕe:", class: "label" %>
             <div class="select">
               <%= select f, :user_type, lists_enums(@user_type) %>
             </div>
+            <%= error_tag f, :user_type %>
           </div>
 
           <%= submit "Create", class: "button is-primary" %>
