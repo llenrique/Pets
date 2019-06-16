@@ -27,13 +27,23 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-primary" href="<%= Routes.user_path(@conn, :new) %>">
-                <strong>Registrate</strong>
-              </a>
-              <%= if @conn.request_path == Routes.page_path(@conn, :index) do %>
-              <a class="button is-light" href="<%= Routes.session_path(@conn, :new) %>">
-                Log in
-              </a>
+              <%= if @conn.request_path == Routes.session_path(@conn, :new) do %>
+                <a class="button is-primary" href="<%= Routes.user_path(@conn, :new) %>">
+                  <strong>Registrate</strong>
+                </a>
+              <% else %>
+                <%= if @conn.request_path == Routes.user_path(@conn, :new) do %>
+                  <a class="button is-light" href="<%= Routes.session_path(@conn, :new) %>">
+                    Log in
+                  </a>
+                <% else %>
+                  <a class="button is-primary" href="<%= Routes.user_path(@conn, :new) %>">
+                    <strong>Registrate</strong>
+                  </a>
+                  <a class="button is-light" href="<%= Routes.session_path(@conn, :new) %>">
+                    Log in
+                  </a>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -44,8 +54,6 @@
 
   </header>
   <main role="main" class="container">
-    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
     <%= render @view_module, @view_template, assigns %>
   </main>
   <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>

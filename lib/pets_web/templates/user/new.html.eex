@@ -1,8 +1,31 @@
 <div class="section">
-  <div class="columns">
+  <div class="columns is-multiline">
+    
     <div class="column is-6 is-offset-3">
       <div class="user-form">
         <h2 class="title">User Signup</h2>
+
+        <%= if get_flash(@conn, :info) do %>
+          <article class="message is-info is-small" role="alert">
+            <div class="message-header">
+              <p>Info</p>
+            </div>
+            <div class="message-body">
+              <p><%= get_flash(@conn, :info) %></p>
+            </div>
+          </article>
+        <% end %>
+        <%= if get_flash(@conn, :error) do %>
+          <article class="message is-danger is-small" role="alert">
+            <div class="message-header">
+              <p>Error</p>
+            </div>
+            <div class="message-body">
+              <p><%= get_flash(@conn, :error) %></p>
+            </div>
+          </article>
+        <% end %>
+
         <%= form_for @user, Routes.user_path(@conn, :create), fn f -> %>
           <div class="field">
             <label class="label">First Name:</label>

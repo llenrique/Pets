@@ -3,20 +3,28 @@ defmodule PetsWeb.SessionController do
   alias Pets.Contexts.UserManager
 
   def new(conn, _) do
-    conn
-    |> render("new.html")
+    case get_session(conn, :user) do
+      nil ->
+        conn
+        |> render("new.html")
+      user ->
+        conn
+        |> redirect(to: Routes.user_path(conn, :show, user.id))
+    end
   end
 
   def delete(conn, _) do
     conn
     |> delete_session(:user)
     |> put_flash(:info, "Logged out successfully!")
-    |> redirect(to: "/login")
+    |> redirect(to: Routes.session_path(conn, :new))
   end
 
   def create(conn, %{"username" => username, "password" => password}) do
-    with user <- UserManager.get_user_by_username(username),
-         {:ok, login_user} <- login(user, password) do
+    with \
+      user <- UserManager.get_user_by_username(username),
+      {:ok, login_user} <- login(user, password)
+    do
       conn
       |> put_flash(:info, "Logged in successfully!")
       |> put_session(:user, %{
@@ -29,7 +37,7 @@ defmodule PetsWeb.SessionController do
       {:error, _} ->
         conn
         |> put_flash(:error, "Invalid credentials")
-        |> render("new.html")
+        |> redirect(to: Routes.session_path(conn, :new))
     end
   end
 
