@@ -29,7 +29,7 @@ defmodule Pets.Contexts.User do
     has_many :pets, Pet
     field :active, :boolean, default: true
     field :phone, :integer, size: 10
-    field :user_type, UserTypeEnum, default: :owner
+    field :user_type, UserTypeEnum
     timestamps()
   end
 
