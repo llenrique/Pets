@@ -10,7 +10,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="<%= Routes.page_path(@conn, :index) %>">
           <h3 class="title has-text-white">Pets Project</h3>

@@ -3,6 +3,7 @@ defmodule PetsWeb.UserController do
   alias Pets.Helpers.UserHelper
 
   plug PetsWeb.VerifyUserSession when action in [:delete, :show, :edit, :update]
+  plug :put_layout, "user_layout.html" when action in [:delete, :edit, :update, :show]
 
   def new(conn, _params) do
     case UserHelper.new do

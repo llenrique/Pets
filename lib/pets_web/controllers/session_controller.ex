@@ -30,7 +30,8 @@ defmodule PetsWeb.SessionController do
       |> put_session(:user, %{
         id: login_user.id,
         username: login_user.username,
-        email: login_user.email
+        email: login_user.email,
+        role: login_user.user_type
       })
       |> redirect(to: "/user/#{login_user.id}")
     else

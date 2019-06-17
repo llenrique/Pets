@@ -2,4 +2,9 @@
   <div class="container">
     <h1 class="title"><%= @user.first_name %> <%= @user.last_name %></h1>
   </div>
+  <%= if @user.user_type == :owner do %>
+    <h1>Owner View</h1>
+  <% else %>
+    <h2>Walker View</h2>
+  <% end %>
 </section>
