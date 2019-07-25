@@ -1,15 +1,15 @@
-defmodule Pets.Repo.Migrations.AddUserTypeColumnToUsersTable do
+defmodule Pets.Repo.Migrations.AddPhotoColumnToUsersTable do
   use Ecto.Migration
 
   def up do
     alter table("users") do
-      add :user_type, :string
+      add :photo, :string
     end
   end
 
   def down do
     alter table("users") do
-      remove :user_type
+      remove :photo
     end
   end
 end
