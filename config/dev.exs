@@ -73,3 +73,13 @@ config :pets, Pets.Repo,
   database: "pets_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :pets, Pets.Scheduler,
+  default_timezone: "America/Mexico_City",
+  timeout: 60_000,
+  jobs: [
+    check_vaccums: [
+      schedule: "6 6 * * *",
+      task: {Pets.Crons.CheckVaccums, :put_first_vaccums, []}
+    ]
+  ]

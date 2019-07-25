@@ -11,9 +11,10 @@ defmodule Pets.Application do
       # Start the Ecto repository
       Pets.Repo,
       # Start the endpoint when the application starts
-      PetsWeb.Endpoint
+      PetsWeb.Endpoint,
       # Starts a worker by calling: Pets.Worker.start_link(arg)
       # {Pets.Worker, arg},
+      Pets.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
